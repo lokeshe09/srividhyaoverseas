@@ -1,0 +1,10 @@
+/* TEAM */
+Organisation: Sri Vidhya Overseas
+Services: MBBS Abroad, UK Education, Master's Abroad, Admissions, Student Visa Guidance
+Location: Warangal & Hyderabad, Telangana, India
+Phone: +91 85008 05336
+
+/* SITE */
+Language: English (India)
+Standards: HTML5, CSS3, schema.org JSON-LD
+Components: React, Vite, React Router

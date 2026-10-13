@@ -1,0 +1,87 @@
+// `icon` names map to lucide-react icons in components/Icon.jsx.
+export const services = [
+  {
+    id: 'mbbs-abroad-admissions',
+    title: 'MBBS Abroad Admissions',
+    icon: 'stethoscope',
+    link: '/mbbs-abroad',
+    text: 'NMC-compliant university shortlisting, admission letters, visa and travel support for MBBS in Russia, Kyrgyzstan, Georgia, Kazakhstan and more.',
+    points: ['NEET & eligibility check', 'University-wise fee comparison', 'Admission & invitation letters', 'Hostel and travel coordination'],
+  },
+  {
+    id: 'study-abroad-counselling',
+    title: 'Study Abroad Counselling',
+    icon: 'compass',
+    link: '/free-counselling',
+    text: 'One-to-one guidance on the right country, course and university based on your academics, budget and career goals.',
+    points: ['Profile evaluation', 'Country & course selection', 'Career-focused advice', 'Parent counselling sessions'],
+  },
+  {
+    id: 'uk-education',
+    title: 'UK Education & Masters',
+    icon: 'graduation',
+    link: '/study-in-uk',
+    text: 'Complete support for UK undergraduate and 1-year Master’s admissions — from shortlisting to CAS and student visa.',
+    points: ['University shortlisting', 'English waiver options', 'CAS & interview preparation', 'Graduate Route guidance'],
+  },
+  {
+    id: 'university-shortlisting',
+    title: 'University Shortlisting',
+    icon: 'list',
+    link: '/study-abroad',
+    text: 'Profile-based shortlists that balance rankings, fees, entry requirements, scholarships and post-study work options.',
+    points: ['Ambitious, moderate & safe choices', 'Budget-based planning', 'Intake & deadline tracking'],
+  },
+  {
+    id: 'applications-sop',
+    title: 'Applications, SOP & LOR',
+    icon: 'file',
+    link: '/free-counselling',
+    text: 'Well-structured applications, Statements of Purpose, LORs and résumés that present your profile honestly and clearly.',
+    points: ['Application filing', 'SOP & LOR guidance', 'Résumé / CV review', 'Interview preparation'],
+  },
+  {
+    id: 'scholarships-loans',
+    title: 'Scholarships & Education Loans',
+    icon: 'wallet',
+    link: '/scholarships',
+    text: 'Find scholarships you are eligible for and get guidance on education loans, documentation and proof of funds.',
+    points: ['Scholarship search', 'Education loan guidance', 'Proof-of-funds planning', 'Telangana state scholarship info'],
+  },
+  {
+    id: 'student-visa',
+    title: 'Student Visa Assistance',
+    icon: 'stamp',
+    link: '/student-visa',
+    text: 'Document checklists, financial preparation, application filing and mock interviews for student visas.',
+    points: ['Country-wise checklists', 'Financial documentation', 'Visa filing support', 'Mock visa interviews'],
+  },
+  {
+    id: 'test-preparation',
+    title: 'IELTS / PTE Guidance',
+    icon: 'book',
+    link: '/exams',
+    text: 'Understand which English test you need, the target score and how to prepare and book the test.',
+    points: ['Test selection', 'Score requirements', 'Booking guidance', 'Preparation resources'],
+  },
+  {
+    id: 'pre-departure',
+    title: 'Pre-Departure & Accommodation',
+    icon: 'plane',
+    link: '/free-counselling',
+    text: 'Accommodation, travel, insurance, forex and a pre-departure briefing so you land prepared.',
+    points: ['Accommodation guidance', 'Flight & forex guidance', 'Insurance', 'Pre-departure briefing'],
+  },
+];
+
+// Student journey (shown on the home page and service pages).
+export const journey = [
+  { title: 'Discover', text: 'Free counselling to understand your goals, academics and budget.' },
+  { title: 'Shortlist', text: 'Country, course and university options that fit your profile.' },
+  { title: 'Exams', text: 'NEET / IELTS / PTE / GRE guidance and score planning.' },
+  { title: 'Apply', text: 'Applications, SOPs, LORs and document preparation.' },
+  { title: 'Offer letter', text: 'Track offers and compare them with you and your parents.' },
+  { title: 'Finance', text: 'Scholarships, education loans and proof of funds.' },
+  { title: 'Visa', text: 'Visa filing, checklists and mock interviews.' },
+  { title: 'Fly', text: 'Accommodation, travel and pre-departure briefing.' },
+];
