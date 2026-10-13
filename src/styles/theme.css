@@ -313,6 +313,23 @@ th, td { border-bottom-color: rgba(11, 42, 74, 0.08); }
 .fab-call { background: var(--grad-primary); }
 .fab-whatsapp { background: linear-gradient(135deg, #3ee07c, #1fae55); }
 
+/* ---------- Logo ---------- */
+.logo { display: inline-flex; align-items: center; flex: none; }
+.logo picture { display: block; }
+.logo-img { display: block; height: 54px; width: auto; transition: filter 0.3s; }
+/* On dark backgrounds (home hero header, footer) lift the logo off the background */
+.logo-light .logo-img { filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) brightness(1.08); }
+.site-footer .logo {
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+}
+.site-footer .logo-light .logo-img { filter: none; height: 50px; }
+.mobile-drawer-head .logo-img { height: 46px; }
+@media (max-width: 1180px) { .logo-img { height: 48px; } }
+@media (max-width: 640px) { .logo-img { height: 42px; } }
+
 /* ---------- Performance / accessibility ---------- */
 @media (max-width: 640px) {
   /* Lighter blur on phones keeps scrolling smooth */

@@ -334,7 +334,7 @@ export function organizationNode() {
     name: SITE.name,
     alternateName: ['Sri Vidhya Overseas Education Consultants', 'Sri Vidhya Overseas Warangal', 'Sri Vidhya Overseas Hyderabad'],
     url: url('/'),
-    logo: { '@type': 'ImageObject', url: url('/icon-512.png'), width: 512, height: 512 },
+    logo: { '@type': 'ImageObject', url: url('/logo.png'), width: 946, height: 240 },
     image: OG_IMAGE.url,
     description: STATIC_PAGES['/'].description,
     slogan: 'Honest guidance for your overseas education',
