@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Menu, X, Phone, MessageCircle, MapPin } from 'lucide-react';
-import { SITE } from '../config/site.js';
+import { ChevronDown, ChevronRight, Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { studyCountries } from '../data/studyCountries.js';
 import { mbbsCountries } from '../data/mbbsCountries.js';
 import { services } from '../data/services.js';
@@ -89,23 +88,6 @@ export default function Header() {
 
   return (
     <>
-      <div className="topbar">
-        <div className="container topbar-inner">
-          <span className="topbar-loc">
-            <MapPin size={14} aria-hidden="true" /> Warangal • Hyderabad • Telangana
-          </span>
-          <div className="topbar-links">
-            <a href={telLink}>
-              <Phone size={14} aria-hidden="true" /> {SITE.phoneDisplay}
-            </a>
-            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-              <MessageCircle size={14} aria-hidden="true" /> WhatsApp
-            </a>
-            <Link to="/contact">Contact</Link>
-          </div>
-        </div>
-      </div>
-
       <header className={`site-header${scrolled ? ' is-scrolled' : ''}${overlay ? ' is-overlay' : ''}`}>
         <div className="container header-inner">
           <Logo light={overlay} />

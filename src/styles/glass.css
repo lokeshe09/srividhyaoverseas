@@ -4,7 +4,7 @@
    ========================================================================== */
 
 :root {
-  --topbar-h: 38px;
+  --topbar-h: 0px; /* top bar removed */
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-bg-strong: rgba(255, 255, 255, 0.14);
   --glass-border: rgba(255, 255, 255, 0.2);
