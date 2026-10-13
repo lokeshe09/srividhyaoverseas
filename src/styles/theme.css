@@ -1,0 +1,331 @@
+/* ==========================================================================
+   v4 — Site-wide glassmorphism theme (loaded last)
+   A soft, slowly drifting colour mesh sits behind every page; all surfaces are
+   frosted glass so the colour glows through them.
+   ========================================================================== */
+
+:root {
+  --g-surface: rgba(255, 255, 255, 0.58);
+  --g-surface-strong: rgba(255, 255, 255, 0.78);
+  --g-border: rgba(255, 255, 255, 0.75);
+  --g-border-soft: rgba(255, 255, 255, 0.45);
+  --g-blur: blur(14px) saturate(170%);
+  --g-shadow: 0 10px 34px -14px rgba(11, 42, 74, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --g-shadow-hover: 0 22px 50px -18px rgba(11, 42, 74, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --g-dark: rgba(255, 255, 255, 0.07);
+  --g-dark-border: rgba(255, 255, 255, 0.16);
+  --grad-primary: linear-gradient(135deg, #1f7bd0 0%, #1565a8 45%, #0b2a4a 100%);
+  --grad-accent: linear-gradient(135deg, #ffcf6b 0%, #f5a524 50%, #e8890c 100%);
+  --line: rgba(11, 42, 74, 0.1);
+}
+
+/* ---------- Ambient background ---------- */
+body { background: #eef4fb; }
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  inset: 0;
+  background:
+    radial-gradient(900px 640px at 6% 8%, rgba(31, 123, 208, 0.22), transparent 62%),
+    radial-gradient(820px 620px at 96% 18%, rgba(245, 165, 36, 0.2), transparent 60%),
+    radial-gradient(760px 600px at 72% 96%, rgba(56, 189, 248, 0.18), transparent 62%),
+    radial-gradient(700px 520px at 14% 88%, rgba(129, 140, 248, 0.14), transparent 60%),
+    linear-gradient(180deg, #f3f8fd 0%, #eaf2fb 100%);
+}
+body::after {
+  width: 46vmax;
+  height: 46vmax;
+  top: 20%;
+  left: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(31, 123, 208, 0.14), transparent 65%);
+  filter: blur(20px);
+  animation: svo-drift 26s ease-in-out infinite alternate;
+}
+@keyframes svo-drift {
+  0% { transform: translate(-30%, -10%) scale(1); }
+  50% { transform: translate(10%, 20%) scale(1.15); }
+  100% { transform: translate(-10%, 40%) scale(0.95); }
+}
+
+/* Sections become transparent so the mesh shows through */
+.section,
+.section-tight { background: transparent; }
+.section-alt { background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.5)); border-block: 1px solid rgba(255, 255, 255, 0.6); }
+
+/* ---------- Light glass surfaces ---------- */
+.country-card,
+.service-card,
+.info-box,
+.blog-card,
+.exam-card,
+.local-card,
+.journey-step,
+.faq-item,
+.sidebar-card,
+.office-card,
+.contact-card,
+.course-card,
+.dest-card,
+.bento-card:not(.bento-feature),
+.svc,
+.office-tile,
+.enquiry,
+.eligibility,
+.table-wrap,
+.exam-pill,
+.team-card,
+.event-card,
+.empty-state,
+.inline-cta,
+.fact,
+.service-row,
+.tabs,
+.testimonial,
+.pathway,
+.elig-band,
+.uni-grid li,
+.steps-list li,
+.timeline-step {
+  background: var(--g-surface);
+  border: 1px solid var(--g-border);
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+  box-shadow: var(--g-shadow);
+}
+.timeline-step { padding: 64px 22px 22px; border-radius: 18px; }
+.timeline-step .timeline-dot { top: 18px; left: 22px; }
+.timeline-step::before { top: 39px; left: 78px; right: -14px; }
+
+.country-card:hover,
+.service-card:hover,
+.blog-card:hover,
+.dest-card:hover,
+.bento-card:not(.bento-feature):hover,
+.svc:hover,
+.exam-pill:hover,
+.contact-card:hover,
+.pathway:hover {
+  background: var(--g-surface-strong);
+  border-color: #fff;
+  box-shadow: var(--g-shadow-hover);
+}
+.faq-item.is-open { background: var(--g-surface-strong); border-color: #fff; }
+.course-card { border-left: 4px solid var(--accent); }
+.elig-band { background: linear-gradient(110deg, rgba(255, 246, 230, 0.75), rgba(255, 255, 255, 0.55)); border-color: rgba(245, 165, 36, 0.35); }
+.inline-cta { background: linear-gradient(110deg, rgba(255, 246, 230, 0.75), rgba(255, 255, 255, 0.5)); border-color: rgba(245, 165, 36, 0.35); }
+.empty-state { border-style: dashed; border-color: rgba(11, 42, 74, 0.18); }
+.eligibility-result { background: rgba(244, 248, 252, 0.7); }
+.sidebar-card, .office-card { border-radius: 18px; }
+
+/* Icons in glass chips */
+.service-icon,
+.bento-icon,
+.pathway-icon {
+  background: linear-gradient(135deg, rgba(31, 123, 208, 0.16), rgba(31, 123, 208, 0.06));
+  border: 1px solid rgba(31, 123, 208, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Flags inside dest cards keep a crisp edge */
+.dest-flag { border-bottom: 1px solid rgba(255, 255, 255, 0.6); }
+
+/* ---------- Tables ---------- */
+.table-wrap { border-radius: 16px; overflow: auto; }
+table { background: transparent; }
+thead th { background: var(--grad-primary); }
+tbody th { background: rgba(234, 243, 252, 0.6); }
+.table-compare tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.35); }
+th, td { border-bottom-color: rgba(11, 42, 74, 0.08); }
+
+/* ---------- Forms ---------- */
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(11, 42, 74, 0.12);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { background: #fff; }
+.chip { background: rgba(255, 255, 255, 0.6); border-color: rgba(11, 42, 74, 0.14); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.chip.is-on { background: var(--grad-primary); border-color: transparent; box-shadow: 0 8px 18px -10px rgba(21, 101, 168, 0.9); }
+.tabs button.is-active { background: var(--grad-primary); }
+
+/* ---------- Buttons ---------- */
+.btn-primary { background: var(--grad-primary); border: 0; box-shadow: 0 12px 26px -12px rgba(21, 101, 168, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+.btn-primary:hover { background: var(--grad-primary); filter: brightness(1.08); box-shadow: 0 16px 32px -12px rgba(21, 101, 168, 0.95); transform: translateY(-1px); }
+.btn-accent { background: var(--grad-accent); border: 0; box-shadow: 0 12px 26px -12px rgba(232, 137, 12, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.45); }
+.btn-accent:hover { background: var(--grad-accent); filter: brightness(1.05); transform: translateY(-1px); }
+.btn-outline { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(21, 101, 168, 0.45); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.btn-outline:hover { background: rgba(255, 255, 255, 0.85); }
+.btn-outline-light { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.4); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.btn-whatsapp { background: linear-gradient(135deg, #3ee07c, #1fae55); box-shadow: 0 12px 24px -12px rgba(31, 174, 85, 0.9); }
+
+/* ---------- Typography accents ---------- */
+.section-heading h2 {
+  background: linear-gradient(120deg, var(--navy-800) 0%, var(--navy-700) 55%, var(--blue-600) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.section-dark .section-heading h2,
+.cta-band h2 { background: none; color: #fff; }
+.eyebrow {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(31, 123, 208, 0.1);
+  border: 1px solid rgba(31, 123, 208, 0.18);
+}
+.eyebrow-light,
+.section-dark .eyebrow,
+.page-hero .eyebrow {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--accent);
+}
+
+/* ---------- Inner page heroes: brand photo + glass ---------- */
+.page-hero {
+  background:
+    linear-gradient(115deg, rgba(5, 18, 34, 0.94) 0%, rgba(8, 32, 58, 0.86) 45%, rgba(21, 101, 168, 0.55) 100%),
+    url('/hero-poster.jpg') center 30% / cover no-repeat;
+  padding: 56px 0 72px;
+}
+.breadcrumbs ol {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.page-hero .enquiry {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+.page-hero .enquiry-title { color: #fff; }
+.page-hero .enquiry-sub,
+.page-hero .form-note { color: rgba(255, 255, 255, 0.75); }
+.page-hero .form-field label { color: rgba(255, 255, 255, 0.85); }
+.page-hero .form-field input,
+.page-hero .form-field select,
+.page-hero .form-field textarea { background: rgba(255, 255, 255, 0.9); border-color: rgba(255, 255, 255, 0.5); }
+.page-hero .form-error { color: #ffb4b4; }
+.page-hero .enquiry-done h3 { color: #fff; }
+.hero-flag { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25), 0 8px 18px -6px rgba(0, 0, 0, 0.5); }
+
+/* ---------- Dark sections ---------- */
+.section-dark {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(700px 500px at 90% 10%, rgba(31, 123, 208, 0.45), transparent 65%),
+    radial-gradient(600px 460px at 0% 100%, rgba(245, 165, 36, 0.18), transparent 60%),
+    linear-gradient(160deg, #061629, #0b2a4a 60%, #0f3c68);
+}
+.reason { background: var(--g-dark); border: 1px solid var(--g-dark-border); border-radius: 18px; }
+.reason:hover { background: rgba(255, 255, 255, 0.11); }
+
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(115deg, rgba(6, 22, 41, 0.92), rgba(21, 101, 168, 0.75)),
+    url('/hero-poster.jpg') center 35% / cover no-repeat;
+  padding: 72px 0;
+}
+.cta-band-inner {
+  padding: 36px 40px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Home specifics ---------- */
+.marquee {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+.bento-feature {
+  background:
+    radial-gradient(400px 300px at 100% 100%, rgba(245, 165, 36, 0.35), transparent 70%),
+    linear-gradient(160deg, rgba(11, 42, 74, 0.96), rgba(21, 101, 168, 0.92));
+  box-shadow: 0 30px 60px -26px rgba(11, 42, 74, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.office-tile-icon,
+.elig-band-icon { box-shadow: 0 10px 22px -10px rgba(11, 42, 74, 0.6); }
+.faq-plane { color: rgba(31, 123, 208, 0.12); }
+
+/* ---------- Header / menus / modal ---------- */
+.site-header:not(.is-overlay) { background: rgba(255, 255, 255, 0.6); border-bottom-color: rgba(255, 255, 255, 0.7); }
+.site-header.is-scrolled:not(.is-overlay) { background: rgba(255, 255, 255, 0.72); box-shadow: 0 10px 30px -18px rgba(11, 42, 74, 0.35); }
+.header-cta { background: var(--grad-primary); }
+.modal-backdrop { background: rgba(6, 22, 41, 0.5); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.modal {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+}
+.modal-side {
+  background:
+    linear-gradient(160deg, rgba(6, 22, 41, 0.9), rgba(21, 101, 168, 0.8)),
+    url('/hero-poster.jpg') 70% center / cover no-repeat;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  position: relative;
+  background:
+    radial-gradient(700px 400px at 100% 0%, rgba(31, 123, 208, 0.3), transparent 65%),
+    radial-gradient(600px 400px at 0% 100%, rgba(245, 165, 36, 0.12), transparent 60%),
+    linear-gradient(180deg, #071a30, #04111f);
+}
+.footer-grid > div:not(.footer-brand) {
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-local { background: rgba(255, 255, 255, 0.02); }
+.footer-bottom { background: rgba(0, 0, 0, 0.25); }
+
+/* ---------- Floating buttons ---------- */
+.fab { border: 1px solid rgba(255, 255, 255, 0.35); }
+.fab-call { background: var(--grad-primary); }
+.fab-whatsapp { background: linear-gradient(135deg, #3ee07c, #1fae55); }
+
+/* ---------- Performance / accessibility ---------- */
+@media (max-width: 640px) {
+  /* Lighter blur on phones keeps scrolling smooth */
+  :root { --g-blur: blur(8px) saturate(150%); }
+  .cta-band-inner { padding: 26px 22px; }
+  .footer-grid > div:not(.footer-brand) { padding: 16px; }
+  body::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --g-surface: rgba(255, 255, 255, 0.92); --g-surface-strong: #fff; }
+  .page-hero .enquiry { background: rgba(11, 42, 74, 0.92); }
+  .modal { background: #fff; }
+}
