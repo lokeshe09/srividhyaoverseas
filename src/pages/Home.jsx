@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
 import Icon from '../components/Icon.jsx';
+import HeroVideo from '../components/HeroVideo.jsx';
 import { SectionHeading, FAQ, CTABand, BlogCard } from '../components/ui.jsx';
 import { useEnquiry } from '../components/EnquiryModal.jsx';
 import { studyCountries } from '../data/studyCountries.js';
@@ -57,8 +58,9 @@ function HeroVisual() {
       <svg viewBox="0 0 520 520" className="hero-globe-svg">
         <defs>
           <radialGradient id="globeFill" cx="35%" cy="30%" r="75%">
-            <stop offset="0%" stopColor="#1f6fb5" />
-            <stop offset="100%" stopColor="#0a2746" />
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.22" />
+            <stop offset="60%" stopColor="#7fb6ff" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#0a2746" stopOpacity="0.18" />
           </radialGradient>
           <linearGradient id="arc" x1="0" x2="1">
             <stop offset="0%" stopColor="#f5a524" stopOpacity="0.2" />
@@ -170,6 +172,7 @@ export default function Home() {
 
       {/* ============ HERO ============ */}
       <section className="home-hero">
+        <HeroVideo />
         <div className="home-hero-bg" aria-hidden="true" />
         <div className="container home-hero-inner">
           <div className="home-hero-copy">

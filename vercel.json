@@ -49,8 +49,12 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/(favicon.ico|favicon.svg|favicon-32.png|apple-touch-icon.png|icon-192.png|icon-512.png|og-image.png)",
+      "source": "/(favicon.ico|favicon.svg|favicon-32.png|apple-touch-icon.png|icon-192.png|icon-512.png|og-image.jpg)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(hero.mp4|hero.webm|hero-mobile.mp4|hero-poster.jpg)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }]
     },
     {
       "source": "/(sitemap.xml|robots.txt|llms.txt|site.webmanifest|humans.txt)",

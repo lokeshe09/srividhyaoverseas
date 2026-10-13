@@ -41,6 +41,12 @@ export const SITE = {
   twitterHandle: '',
   // Year the business started (for structured data). Leave empty if unsure.
   foundingYear: '',
+  // Home hero background video (files go in /public). Missing files are ignored and the
+  // gradient background shows instead. Set any value to '' to disable it.
+  heroVideo: '/hero.mp4', // 1920×1080 H.264, seamless 9 s loop
+  heroVideoWebm: '/hero.webm', // VP9, smaller — preferred by browsers that support it
+  heroVideoMobile: '/hero-mobile.mp4', // 1280×720 for phones
+  heroPoster: '/hero-poster.jpg',
   // Optional: a form backend URL (e.g. Formspree, Google Apps Script, CRM webhook) that accepts
   // a JSON POST. Leave empty to send enquiries via WhatsApp only.
   formEndpoint: '',

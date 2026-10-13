@@ -1,0 +1,177 @@
+/* ==========================================================================
+   v3 — Glassmorphism + transparent header over the home hero video
+   (loaded last, after global.css and home.css)
+   ========================================================================== */
+
+:root {
+  --topbar-h: 38px;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-strong: rgba(255, 255, 255, 0.14);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  --glass-blur: blur(16px) saturate(150%);
+  --glass-light-bg: rgba(255, 255, 255, 0.72);
+}
+
+.topbar-inner { min-height: var(--topbar-h); height: var(--topbar-h); }
+
+/* ---------- Header: frosted glass on every page ---------- */
+.site-header {
+  background: var(--glass-light-bg);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(223, 230, 238, 0.6);
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.site-header.is-scrolled { background: rgba(255, 255, 255, 0.8); }
+
+.dropdown,
+.mega-menu {
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-color: rgba(223, 230, 238, 0.8);
+}
+.mobile-drawer {
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+}
+
+/* ---------- Home: top bar + header float over the hero ---------- */
+.route-home .topbar {
+  position: relative;
+  z-index: 51;
+  background: rgba(4, 14, 28, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.route-home main { margin-top: calc(-1 * (var(--header-h) + var(--topbar-h))); }
+.route-home .home-hero { padding-top: calc(var(--header-h) + var(--topbar-h) + 56px); }
+
+.site-header.is-overlay {
+  background: rgba(6, 22, 41, 0.16);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+}
+.is-overlay .nav-link,
+.is-overlay .nav-trigger,
+.is-overlay .menu-toggle { color: #fff; }
+.is-overlay .nav-link:hover,
+.is-overlay .nav-trigger:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.is-overlay .nav-link.active { color: var(--accent); }
+.is-overlay .header-cta {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--glass-highlight);
+}
+.is-overlay .header-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--navy-900); }
+
+/* ---------- Hero video layers ---------- */
+.home-hero { isolation: isolate; }
+.hero-media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.hero-poster,
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+.hero-video { opacity: 0; transition: opacity 1.2s ease; }
+.hero-video.is-ready { opacity: 1; }
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(4, 14, 28, 0.82) 0%, rgba(4, 14, 28, 0.55) 45%, rgba(4, 14, 28, 0.18) 100%),
+    linear-gradient(180deg, rgba(4, 14, 28, 0.45) 0%, transparent 28%, transparent 70%, rgba(4, 14, 28, 0.65) 100%);
+}
+/* Lighter grid + glows so the video shows through */
+.home-hero-bg { z-index: -1; opacity: 0.55; }
+.home-hero-inner,
+.home-hero .stats-bar { z-index: 1; }
+
+/* ---------- Glass components in the hero ---------- */
+.hero-badge,
+.goal,
+.btn-glass,
+.hero-contact-icon,
+.stats-bar {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-highlight);
+}
+.goal:hover { background: var(--glass-bg-strong); border-color: var(--accent); }
+.btn-glass:hover { background: var(--glass-bg-strong); }
+.hero-contact-icon.wa { background: rgba(37, 211, 102, 0.18); border-color: rgba(92, 240, 148, 0.35); }
+
+.stats-bar {
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: var(--glass-highlight), 0 -10px 40px -20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-globe-svg { filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.35)); }
+
+.float-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.55), var(--glass-highlight);
+  color: #fff;
+}
+.float-card strong { color: #fff; }
+.float-card span { color: rgba(255, 255, 255, 0.78); }
+.float-card .text-success { color: #5cf094; }
+.float-pin {
+  background: rgba(245, 165, 36, 0.85);
+  border: 1px solid rgba(255, 220, 160, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 24px -10px rgba(245, 165, 36, 0.8);
+}
+
+/* ---------- Glass on other dark surfaces ---------- */
+.reason {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--glass-highlight);
+}
+.page-hero .enquiry {
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.fab { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 980px) {
+  .hero-scrim {
+    background:
+      linear-gradient(180deg, rgba(4, 14, 28, 0.7) 0%, rgba(4, 14, 28, 0.55) 50%, rgba(4, 14, 28, 0.75) 100%);
+  }
+}
+@media (max-width: 640px) {
+  .route-home .home-hero { padding-top: calc(var(--header-h) + var(--topbar-h) + 28px); }
+}
+
+/* Browsers without backdrop-filter: use more opaque surfaces so text stays readable */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header { background: rgba(255, 255, 255, 0.97); }
+  .site-header.is-overlay { background: rgba(6, 22, 41, 0.75); }
+  .float-card { background: rgba(11, 42, 74, 0.85); }
+  .hero-badge, .goal, .btn-glass, .stats-bar { background: rgba(11, 42, 74, 0.6); }
+}

@@ -31,7 +31,7 @@ const urls = getAllRoutes()
       `    <changefreq>${changefreq}</changefreq>`,
       `    <priority>${priority}</priority>`,
       '    <image:image>',
-      `      <image:loc>${SITE.url}/og-image.png</image:loc>`,
+      `      <image:loc>${SITE.url}/og-image.jpg</image:loc>`,
       `      <image:title>${esc(seo.h1)}</image:title>`,
       '    </image:image>',
       '  </url>',

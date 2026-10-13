@@ -16,7 +16,7 @@ import { services } from './services.js';
 const url = (path = '/') => `${SITE.url}${path}`;
 const ORG_ID = `${SITE.url}/#organization`;
 const WEBSITE_ID = `${SITE.url}/#website`;
-export const OG_IMAGE = { url: url('/og-image.png'), width: 1200, height: 630, type: 'image/png' };
+export const OG_IMAGE = { url: url('/og-image.jpg'), width: 1200, height: 630, type: 'image/jpeg' };
 export const ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
 const BRAND_KW = ['Sri Vidhya Overseas', 'Sri Vidhya Overseas Warangal', 'Sri Vidhya Overseas Hyderabad'];
@@ -539,6 +539,8 @@ export function buildHeadTags(seo) {
       ? [m('geo.position', `${SITE.offices[0].geo.lat};${SITE.offices[0].geo.lng}`), m('ICBM', `${SITE.offices[0].geo.lat}, ${SITE.offices[0].geo.lng}`)]
       : []),
     { tag: 'link', attrs: { rel: 'canonical', href: seo.canonical } },
+    // Home hero poster is the largest above-the-fold image (LCP) — fetch it first.
+    seo.path === '/' && SITE.heroPoster && { tag: 'link', attrs: { rel: 'preload', as: 'image', href: SITE.heroPoster, fetchpriority: 'high' } },
     { tag: 'link', attrs: { rel: 'alternate', hrefLang: 'en-IN', href: seo.canonical } },
     { tag: 'link', attrs: { rel: 'alternate', hrefLang: 'x-default', href: seo.canonical } },
 

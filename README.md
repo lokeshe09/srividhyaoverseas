@@ -38,7 +38,7 @@ Unknown URLs get a real 404 status with `404.html`.
   `<head>` and crawlable fallback content (H1, intro, FAQs, internal links). Search engines and social
   previews see everything without running JavaScript; React takes over in the browser.
 - **`scripts/generate-sitemap.mjs`** — `sitemap.xml` (lastmod, changefreq, priority, image tags) and `robots.txt`.
-- `public/` — `og-image.png` (1200×630), favicons, app icons, `site.webmanifest`, `llms.txt`, `humans.txt`.
+- `public/` — `og-image.jpg` (1200×630), favicons, app icons, `site.webmanifest`, `llms.txt`, `humans.txt`.
 
 ## Before going live — update these
 
@@ -53,11 +53,15 @@ All in `src/config/site.js` (empty values are simply hidden — nothing is inven
 - `formEndpoint` — optional JSON endpoint (Formspree / Google Apps Script / CRM). Without it, every
   enquiry opens WhatsApp (8500805336) with the details pre-filled.
 
+Hero video: put `hero.mp4` (H.264, 1920×1080, no audio, < 6 MB) and `hero-poster.jpg` (first frame, < 200 KB)
+in `public/`. Paths are set in `src/config/site.js` (`heroVideo`, `heroVideoWebm`, `heroPoster`). Until the
+files exist, the hero shows its gradient background. The video is skipped for reduced-motion and data-saver users.
+
 Also:
 
 - `src/data/people.js` — add **genuine** testimonials and team members (sections stay hidden while empty)
 - `src/pages/Events.jsx` — add real upcoming events to `upcoming`
-- `src/components/Logo.jsx` + `public/og-image.png` / icons — swap in the official logo when available
+- `src/components/Logo.jsx` + `public/og-image.jpg` / icons — swap in the official logo when available
 - Review fees / visa rules in `src/data/*.js` every intake; have the legal pages reviewed
 
 ## Structure

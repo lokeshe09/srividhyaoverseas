@@ -65,6 +65,13 @@ export default function Header() {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
   }, [mobileOpen]);
 
+  // On the home page the top bar + header float over the hero video.
+  const isHome = pathname === '/';
+  const overlay = isHome && !scrolled && !mobileOpen && !desktopMenu;
+  useEffect(() => {
+    document.documentElement.classList.toggle('route-home', isHome);
+  }, [isHome]);
+
   const toggle = (key) => setOpen((o) => ({ ...o, [key]: !o[key] }));
 
   const dropdownProps = (key) => ({
@@ -99,9 +106,9 @@ export default function Header() {
         </div>
       </div>
 
-      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
+      <header className={`site-header${scrolled ? ' is-scrolled' : ''}${overlay ? ' is-overlay' : ''}`}>
         <div className="container header-inner">
-          <Logo />
+          <Logo light={overlay} />
 
           <nav className="desktop-nav" aria-label="Main">
             <div {...dropdownProps('countries')}>
